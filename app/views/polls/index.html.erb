@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl">Polls#index</h1>
-  <p>Find me in app/views/polls/index.html.erb</p>
+<h1 class="text-3xl font-bold mb-6">Available Polls</h1>
+
+<div class="space-y-4">
+  <% @polls.each do |poll| %>
+    <div class="border p-4 rounded-md hover:bg-gray-50 transition">
+      <%= link_to poll.title, poll_path(poll), class: "text-lg font-medium text-blue-600 hover:underline" %>
+      <p class="text-sm text-gray-600 mt-1"><%= pluralize(poll.options.sum(&:votes_count), 'vote') %> so far</p>
+    </div>
+  <% end %>
 </div>

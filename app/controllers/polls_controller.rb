@@ -1,10 +1,9 @@
 class PollsController < ApplicationController
   def index
+    @polls = Poll.all
   end
 
   def show
-  end
-
-  def vote
+    @poll = Poll.includes(options: :votes).find(params[:id])
   end
 end
