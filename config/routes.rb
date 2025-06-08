@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "polls/index"
+  get "polls/show"
+  get "polls/vote"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +14,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :polls, only: [:index, :show] do
+    member do
+      post :vote
+    end
+  end
 end
