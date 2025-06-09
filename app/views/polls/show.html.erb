@@ -12,7 +12,7 @@
         <%= turbo_frame_tag "poll_#{@poll.id}" do %>
           <div class="d-grid gap-3">
             <% @poll.options.each do |option| %>
-              <div class="d-flex justify-content-between align-items-center border p-3 rounded border-secondary-subtle bg-white shadow-sm">
+              <div class="d-flex justify-content-between align-items-center border p-3 rounded border-0 bg-light shadow-sm">
                 <span><%= option.text %></span>
                 <span class="d-flex align-items-center gap-2">
                   <span id="option_votes_<%= option.id %>" class="text-muted small">
@@ -39,9 +39,4 @@
   <% else %>
     <h3>Poll doesn't exist.</h3>
   <% end %>
-</div>
-
-
-
-  
 </div>
