@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "polls#index"
 
   resources :polls, only: [:index, :show] do
     member do

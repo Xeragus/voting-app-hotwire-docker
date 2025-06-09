@@ -1,0 +1,15 @@
+<turbo-stream action="replace" target="option_votes_<%= @option.id %>">
+  <template>
+    <span id="option_votes_<%= @option.id %>" class="text-sm text-gray-600">
+      <%= @option.votes.count %> votes
+    </span>
+  </template>
+</turbo-stream>
+
+<turbo-stream action="replace" target="flash">
+  <template>
+    <div id="flash" class="mt-4 mx-auto w-fit px-4 py-3 rounded bg-green-100 text-green-800 border border-green-300 shadow text-sm font-medium">
+      <%= flash[:notice] %>
+    </div>
+  </template>
+</turbo-stream>
