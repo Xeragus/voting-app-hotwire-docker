@@ -42,3 +42,10 @@ Open your browser and go to:
 ```
 http://localhost:3000
 ```
+
+### 4. Running the Tests
+
+To run the tests:
+```
+rspec
+```
