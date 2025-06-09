@@ -5,8 +5,8 @@ services:
       - db_data:/var/lib/postgresql/data
     environment:
       # This creates the database user and password inside the PostgreSQL container
-      POSTGRES_USER: voting_b2b_admin
-      POSTGRES_PASSWORD: b2b123123
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: voting_b2b_development
     ports:
       # Optional: To connect to the DB from your host machine with a GUI client
@@ -25,11 +25,12 @@ services:
       - "3000:3000"
     environment:
       # These variables tell your Rails app how to connect to the database
-      DATABASE_HOST: db               # <--- IMPORTANT: Use the service name, not 'localhost'
-      DATABASE_USER: voting_b2b_admin
-      DATABASE_PASSWORD: b2b123123
+      DATABASE_HOST: db
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_DB: voting_b2b_development
-      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY} # Reads from the .env file
+    env_file:
+      - .env
     depends_on:
       - db
 
