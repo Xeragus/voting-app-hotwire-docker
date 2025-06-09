@@ -8,6 +8,13 @@ A containerized, real-time polling app built with **Ruby on Rails 8**, **Hotwire
 
 These instructions will get your development environment set up and running in Docker.
 
+Before we begin, clone the repo and enter the root folder. There, create the .env file with the following env vars, and add your values - or just copy the ones provided below:
+```
+DATABASE_USERNAME=voting_b2b_admin
+DATABASE_PASSWORD=b2b123123
+DATABASE_HOST=localhost
+```
+
 
 ### 📦 1. Build and Start Containers
 
