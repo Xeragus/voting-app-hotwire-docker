@@ -1,37 +1,47 @@
-<div class="absolute top-4 left-4">
-  <%= link_to "← Back", root_path, class: "text-blue-600 hover:underline text-2xl" %>
+<div class="position-absolute top-0 start-5 mt-5">
+  <%= link_to "← Back", root_path, class: "text-primary text-decoration-none fs-4" %>
 </div>
 
-<h1 class="text-2xl font-bold mb-15 text-center"><%= @poll.question %></h1>
+<div class="mt-5 text-center">
+  <% if @poll %>
+    
+    <h1 class="text-center fw-bold mb-5 fs-2"><%= @poll.question %></h1>
 
-<div class="flex flex-col items-center justify-center">
-  <div>
-    <%= turbo_frame_tag "poll_#{@poll.id}" do %>
-      <div class="space-y-4 w-xs">
-        <% @poll.options.each do |option| %>
-          <div class="flex items-center justify-between border p-3 rounded border-gray-200">
-            <span><%= option.text %></span>
-            <span class="flex items-center gap-2">
-            
-              <span id="option_votes_<%= option.id %>" class="text-sm text-gray-600">
-                <%= option.votes.count %> votes
-              </span>
-              <%= button_to "Vote", votes_path(option_id: option.id),
-                  method: :post,
-                  form: { data: { turbo_stream: true } },
-                  class: "bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-800 cursor-pointer" %>
-            </span>
+    <div class="d-flex flex-column align-items-center justify-content-center">
+      <div class="w-100" style="max-width: 400px;">
+        <%= turbo_frame_tag "poll_#{@poll.id}" do %>
+          <div class="d-grid gap-3">
+            <% @poll.options.each do |option| %>
+              <div class="d-flex justify-content-between align-items-center border p-3 rounded border-secondary-subtle bg-white shadow-sm">
+                <span><%= option.text %></span>
+                <span class="d-flex align-items-center gap-2">
+                  <span id="option_votes_<%= option.id %>" class="text-muted small">
+                    <%= option.votes.count %> votes
+                  </span>
+                  <%= button_to "Vote", votes_path(option_id: option.id),
+                      method: :post,
+                      form: { data: { turbo_stream: true } },
+                      class: "btn btn-sm btn-primary" %>
+                </span>
+              </div>
+            <% end %>
           </div>
         <% end %>
-      </div>
-    <% end %>
-  </div>
 
-  <% if flash[:notice] %>
-    <div id="flash" data-controller="flash" class="mt-4 mx-auto w-fit px-4 py-3 rounded bg-green-100 text-green-800 border border-green-300 shadow text-sm font-medium">
-      <%= flash[:notice] %>
+        <% if flash[:notice] %>
+          <div id="flash" data-controller="flash" class="alert alert-success mt-5" role="alert">
+            <%= flash[:notice] %>
+          </div>
+        <% else %>
+          <div id="flash" data-controller="flash"></div>
+        <% end %>
     </div>
   <% else %>
-    <div id="flash" data-controller="flash"></div> 
+    <h3>Poll doesn't exist.</h3>
   <% end %>
+</div>
+
+
+
+  
 </div>

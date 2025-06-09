@@ -63,3 +63,10 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+gem 'dotenv'
+
+gem "bootstrap", "~> 5.3"
+
+gem "dartsass-rails", "~> 0.5.1"
+
+gem "foreman", "~> 0.88.1"

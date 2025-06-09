@@ -4,7 +4,6 @@ class VotesController < ApplicationController
       @vote = @option.votes.create!
 
       flash[:notice] = "You have successfully voted for option '#{@option.text}'."
-
   
       respond_to do |format|
         format.turbo_stream

@@ -4,6 +4,6 @@ class PollsController < ApplicationController
   end
 
   def show
-    @poll = Poll.includes(options: :votes).find(params[:id])
+    @poll = Poll.includes(options: :votes).find_by(id: params[:id])
   end
 end

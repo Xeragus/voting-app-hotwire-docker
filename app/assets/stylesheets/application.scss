@@ -8,3 +8,12 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+@import "bootstrap";
+
+.hover-gray:hover {
+    background-color: #dbdbdb !important;
+    /* Light gray */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
