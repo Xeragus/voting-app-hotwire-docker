@@ -39,8 +39,9 @@ Once the containers are up, open a new terminal tab and run:
 
 ```
 docker compose exec web rails db:create db:migrate db:seed
+docker compose exec web bundle exec rake assets:precompile
 ```
-This will create and seed the database.
+This will create and seed the database, and compile the assets.
 
 ### 🌐 3. Access the App
 
