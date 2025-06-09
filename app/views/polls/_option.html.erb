@@ -1,0 +1,28 @@
+<% option_votes = option.vote_count %>
+<% percentage = option.vote_percentage(total_votes) %>
+
+<div id="option_<%= option.id %>" class="border p-3 rounded bg-light shadow-sm mb-3">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <span><%= option.text %></span>
+    <span id="option_votes_<%= option.id %>" class="text-muted small">
+      <%= option_votes %> votes
+    </span>
+  </div>
+
+  <div class="progress" style="height: 20px;">
+    <div class="progress-bar" role="progressbar"
+         style="width: <%= percentage %>%;" 
+         aria-valuenow="<%= percentage %>" 
+         aria-valuemin="0" 
+         aria-valuemax="100">
+    </div>
+  </div>
+  <span class="text-center"><%= percentage %>%</span>
+
+  <div class="text-end mt-2">
+    <%= button_to "Vote", votes_path(option_id: option.id),
+        method: :post,
+        form: { data: { turbo_stream: true } },
+        class: "btn btn-sm btn-primary" %>
+  </div>
+</div>

@@ -1,8 +1,9 @@
-<turbo-stream action="replace" target="option_votes_<%= @option.id %>">
+<turbo-stream action="replace" target="poll_options_<%= @total_votes - 1 %>">
   <template>
-    <span id="option_votes_<%= @option.id %>" class="text-muted small">
-      <%= @option.votes.count %> votes
-    </span>
+    <% version = @option.poll.options.sum { |o| o.votes.count } %>
+    <div id="poll_options_<%= version %>" class="row">
+      <%= render partial: "polls/options", formats: [:html], locals: { poll: @option.poll, total_votes: @total_votes } %>
+    </div>
   </template>
 </turbo-stream>
 

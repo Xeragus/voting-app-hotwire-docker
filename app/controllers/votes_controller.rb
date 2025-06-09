@@ -2,6 +2,7 @@ class VotesController < ApplicationController
     def create
       @option = Option.find(params[:option_id])
       @vote = @option.votes.create!
+      @total_votes = @option.poll.options.sum { |o| o.votes.count }
 
       flash[:notice] = "You have successfully voted for option '#{@option.text}'."
   

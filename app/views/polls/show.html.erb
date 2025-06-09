@@ -7,26 +7,11 @@
     
     <h1 class="text-center fw-bold mb-5 fs-2"><%= @poll.question %></h1>
 
-    <div class="d-flex flex-column align-items-center justify-content-center">
-      <div class="w-100" style="max-width: 400px;">
-        <%= turbo_frame_tag "poll_#{@poll.id}" do %>
-          <div class="d-grid gap-3">
-            <% @poll.options.each do |option| %>
-              <div class="d-flex justify-content-between align-items-center border p-3 rounded border-0 bg-light shadow-sm">
-                <span><%= option.text %></span>
-                <span class="d-flex align-items-center gap-2">
-                  <span id="option_votes_<%= option.id %>" class="text-muted small">
-                    <%= option.votes.count %> votes
-                  </span>
-                  <%= button_to "Vote", votes_path(option_id: option.id),
-                      method: :post,
-                      form: { data: { turbo_stream: true } },
-                      class: "btn btn-sm btn-primary" %>
-                </span>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+      <div class="w-100">
+        <div id="poll_options_<%= @total_votes %>" class="row">
+          <%= render partial: "polls/options", locals: { poll: @poll, total_votes: @total_votes } %>
+        </div>
 
         <% if flash[:notice] %>
           <div id="flash" data-controller="flash" class="alert alert-success mt-5" role="alert">
@@ -35,6 +20,7 @@
         <% else %>
           <div id="flash" data-controller="flash"></div>
         <% end %>
+      </div>
     </div>
   <% else %>
     <h3>Poll doesn't exist.</h3>

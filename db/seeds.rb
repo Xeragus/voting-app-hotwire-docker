@@ -13,6 +13,7 @@ poll.options.create!(text: "Ruby")
 poll.options.create!(text: "JavaScript")
 poll.options.create!(text: "Python")
 poll.options.create!(text: "Go")
+poll.options.create!(text: "Java")
 poll.options.create!(text: "Other")
 
 poll2 = Poll.create!(question: "What's your favorite kind of pizza?")
@@ -20,6 +21,7 @@ poll2.options.create!(text: "Margherita")
 poll2.options.create!(text: "Pepperoni")
 poll2.options.create!(text: "Hawaiian")
 poll2.options.create!(text: "Four Cheese")
+poll2.options.create!(text: "Vegetarian")
 poll2.options.create!(text: "Other")
 
 poll3 = Poll.create!(question: "What's your favorite summer vacation destination?")
@@ -27,7 +29,5 @@ poll3.options.create!(text: "Spain")
 poll3.options.create!(text: "Mexico")
 poll3.options.create!(text: "Greece")
 poll3.options.create!(text: "Italy")
+poll3.options.create!(text: "France")
 poll3.options.create!(text: "Other")
-
-
-
