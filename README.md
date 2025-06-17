@@ -1,4 +1,4 @@
-# 🗳️ Voting App - B2B Media Group Interview
+# 🗳️ Voting App - Hotwire, Docker
 
 A containerized, real-time polling app built with **Ruby on Rails 8**, **Hotwire**, **Bootstrap**, and **PostgreSQL**.
 
